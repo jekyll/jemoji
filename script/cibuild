@@ -1,5 +1,6 @@
 #! /bin/sh
 
+export PATH=/usr/share/rbenv/shims:$PATH RBENV_VERSION=$(cat .ruby-version)
 script/bootstrap
 
 bundle exec rake test
