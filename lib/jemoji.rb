@@ -4,20 +4,24 @@ require 'gemoji'
 module Jekyll
   class Jemoji < Jekyll::Generator
     def src
-      if @site.config.key?("emoji") && @site.config["emoji"].key?("src")
-        @site.config["emoji"]["src"]
-      else
-        "https://github.global.ssl.fastly.net/images/icons/emoji/"
-      end
+      @src ||=
+        if @site.config.key?("emoji") && @site.config["emoji"].key?("src")
+          @site.config["emoji"]["src"]
+        else
+          "https://github.global.ssl.fastly.net/images/icons/emoji/"
+        end
     end
 
     def emoji
-      Emoji.names
+      @emoji ||= Emoji.names
     end
 
     def regex
-      emoji_escaped = emoji.map { |emoji| Regexp.escape(emoji) }
-      Regexp.new ":(#{emoji_escaped.join("|")}):"
+      @rejex ||=
+        begin
+          emoji_escaped = emoji.map { |emoji| Regexp.escape(emoji) }
+          Regexp.new ":(#{emoji_escaped.join("|")}):"
+        end
     end
 
     def generate(site)
@@ -31,7 +35,7 @@ module Jekyll
     end
 
     def img(name)
-      "<img src=\"#{src}/#{name}.png\" alt=\"#{name}\" class=\"emoji\" \>"
+      "<img src=\"#{src}/#{name}.png\" alt=\"#{name}\" class=\"emoji\"/>"
     end
   end
 end

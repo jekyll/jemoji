@@ -1,6 +1,6 @@
 # Jemoji
 
-GitHub-flavored Emoji support for Jekyll
+GitHub-flavored Emoji plugin for Jekyll
 
 ## Usage
 
