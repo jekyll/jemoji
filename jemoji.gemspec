@@ -3,9 +3,9 @@ Gem::Specification.new do |s|
   s.summary = "GitHub-flavored emoji plugin for Jekyll"
   s.description = ""
   s.version = "0.0.1"
-  s.authors = ["Ben Balter"]
-  s.email = "ben.balter@github.com"
-  s.homepage = "https://github.com/benbalter/jemoji"
+  s.authors = ["GitHub, Inc."]
+  s.email = "support@github.com"
+  s.homepage = "https://github.com/github/jemoji"
   s.licenses = ["MIT"]
   s.files = [ "lib/jemoji.rb" ]
   s.add_dependency( "jekyll" )
