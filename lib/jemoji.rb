@@ -8,7 +8,7 @@ module Jekyll
         if @site.config.key?("emoji") && @site.config["emoji"].key?("src")
           @site.config["emoji"]["src"]
         else
-          "https://github.global.ssl.fastly.net/images/icons/emoji/"
+          "https://github.global.ssl.fastly.net/images/icons/emoji"
         end
     end
 
@@ -17,7 +17,7 @@ module Jekyll
     end
 
     def regex
-      @rejex ||=
+      @regex ||=
         begin
           emoji_escaped = emoji.map { |emoji| Regexp.escape(emoji) }
           Regexp.new ":(#{emoji_escaped.join("|")}):"
@@ -31,11 +31,11 @@ module Jekyll
     end
 
     def emojify(page)
-      page.content.gsub!(regex) { |name| img(name) }
+      page.content.gsub!(regex) { img($1) }
     end
 
     def img(name)
-      "<img src=\"#{src}/#{name}.png\" alt=\"#{name}\" class=\"emoji\"/>"
+      "<img src=\"#{src}/#{name}.png\" alt=\"#{name}\" class=\"emoji\" height=\"20\" />"
     end
   end
 end

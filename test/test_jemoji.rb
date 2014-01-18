@@ -9,7 +9,7 @@ class TestJemoji < Test::Unit::TestCase
     @page = Jekyll::Page.new(@site, File.expand_path("../../", __FILE__), "", "README.md")
     @page.instance_variable_set "@content", ":+1:"
     @site.pages.push @page
-    @img = '<img src="https://github.global.ssl.fastly.net/images/icons/emoji//:+1:.png" alt=":+1:" class="emoji"/>'
+    @img = '<img src="https://github.global.ssl.fastly.net/images/icons/emoji/+1.png" alt="+1" class="emoji" height="20" />'
   end
 
   should "retrieve emoji list" do
@@ -26,7 +26,7 @@ class TestJemoji < Test::Unit::TestCase
   end
 
   should "generate image tag" do
-    assert_equal @img, @jemoji.img(":+1:")
+    assert_equal @img, @jemoji.img("+1")
   end
 
   should "replace emoji with img" do
