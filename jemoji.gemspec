@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "jemoji"
-  s.summary = ""
+  s.summary = "GitHub-flavored emoji plugin for Jekyll"
   s.description = ""
   s.version = "0.0.1"
   s.authors = ["Ben Balter"]
