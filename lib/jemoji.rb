@@ -27,7 +27,7 @@ module Jekyll
         "<#{TAG}>#{page.content}</#{TAG}>",
         { :asset_root => src }
       )
-      page.content = filter.call.search(TAG).children.to_s
+      page.content = filter.call.search(TAG).children.to_xml
     end
   end
 end
