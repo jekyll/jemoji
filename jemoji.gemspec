@@ -10,4 +10,5 @@ Gem::Specification.new do |s|
   s.files = [ "lib/jemoji.rb" ]
   s.add_dependency( "jekyll" )
   s.add_dependency( "gemoji" )
+  s.add_dependency( "html-pipeline" )
 end
