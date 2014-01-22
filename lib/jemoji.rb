@@ -20,16 +20,13 @@ module Jekyll
 
     def generate(site)
       @site = site
+      @filter = HTML::Pipeline::EmojiFilter.new(nil, { :asset_root => src })
       site.pages.each { |page| emojify page }
       site.posts.each { |page| emojify page }
     end
 
     def emojify(page)
-      filter = HTML::Pipeline::EmojiFilter.new(
-        "<#{TAG}>#{page.content}</#{TAG}>",
-        { :asset_root => src }
-      )
-      page.content = filter.call.search(TAG).children.to_xml
+      page.content = @filter.emoji_image_filter(page.content)
     end
   end
 end
