@@ -5,6 +5,8 @@ require 'html/pipeline'
 module Jekyll
   class Jemoji < Jekyll::Generator
 
+    safe true
+
     TAG = "jekyll_jemoji"
 
     def src
