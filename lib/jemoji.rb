@@ -7,8 +7,6 @@ module Jekyll
 
     safe true
 
-    TAG = "jekyll_jemoji"
-
     def src
       @src ||=
         if @site.config.key?("emoji") && @site.config["emoji"].key?("src")
