@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.homepage = "https://github.com/github/jemoji"
   s.licenses = ["MIT"]
   s.files = [ "lib/jemoji.rb" ]
-  s.add_dependency( "jekyll" )
-  s.add_dependency( "gemoji" )
-  s.add_dependency( "html-pipeline" )
+  s.add_dependency( "jekyll", '~> 1.4.3')
+  s.add_dependency( "html-pipeline", '~> 1.5.0' )
+  s.add_dependency( "gemoji", '~> 1.5.0' )
 end

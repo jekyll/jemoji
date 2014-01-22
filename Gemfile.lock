@@ -2,9 +2,9 @@ PATH
   remote: .
   specs:
     jemoji (0.0.8)
-      gemoji
-      html-pipeline
-      jekyll
+      gemoji (~> 1.5.0)
+      html-pipeline (~> 1.5.0)
+      jekyll (~> 1.4.3)
 
 GEM
   remote: https://rubygems.org/
