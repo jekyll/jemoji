@@ -12,7 +12,7 @@ module Jekyll
         if @site.config.key?("emoji") && @site.config["emoji"].key?("src")
           @site.config["emoji"]["src"]
         else
-          "http://assets.github.com/images/icons/"
+          "https://assets.github.com/images/icons/"
         end
     end
 
