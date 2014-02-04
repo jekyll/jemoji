@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jemoji (0.0.8)
+    jemoji (0.0.9)
       gemoji (~> 1.5.0)
       html-pipeline (~> 1.5.0)
       jekyll (~> 1.4.3)
