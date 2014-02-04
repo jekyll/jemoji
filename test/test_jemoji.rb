@@ -9,7 +9,7 @@ class TestJemoji < Test::Unit::TestCase
     @page = Jekyll::Page.new(@site, File.expand_path("../../", __FILE__), "", "README.md")
     @page.instance_variable_set "@content", ":+1:"
     @site.pages.push @page
-    @img = "<img class='emoji' title=':+1:' alt=':+1:' src='http://assets.github.com/images/icons/emoji/%2B1.png' height='20' width='20' align='absmiddle' />"
+    @img = "<img class='emoji' title=':+1:' alt=':+1:' src='https://assets.github.com/images/icons/emoji/%2B1.png' height='20' width='20' align='absmiddle' />"
   end
 
   should "replace emoji with img" do
