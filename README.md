@@ -2,6 +2,8 @@
 
 GitHub-flavored Emoji plugin for Jekyll
 
+[![Gem Version](https://badge.fury.io/rb/jemoji.png)](http://badge.fury.io/rb/jemoji)
+
 ## Usage
 
 Add the following to your site's `Gemfile`
