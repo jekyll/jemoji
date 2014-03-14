@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version = "0.0.9"
   s.authors = ["GitHub, Inc."]
   s.email = "support@github.com"
-  s.homepage = "https://github.com/github/jemoji"
+  s.homepage = "https://github.com/jekyll/jemoji"
   s.licenses = ["MIT"]
   s.files = [ "lib/jemoji.rb" ]
   s.add_dependency( "jekyll", '~> 1.4.3')
