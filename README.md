@@ -3,6 +3,7 @@
 GitHub-flavored Emoji plugin for Jekyll
 
 [![Gem Version](https://badge.fury.io/rb/jemoji.png)](http://badge.fury.io/rb/jemoji)
+[![Build Status](https://travis-ci.org/jekyll/jemoji.svg?branch=master)](https://travis-ci.org/jekyll/jemoji)
 
 ## Usage
 
