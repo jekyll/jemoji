@@ -1,6 +1,6 @@
 require 'helper'
 
-class TestJemoji < Test::Unit::TestCase
+class TestJemoji < Minitest::Test
 
   def setup
     @site = Jekyll::Site.new(Jekyll::Configuration::DEFAULTS)
