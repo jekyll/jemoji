@@ -20,7 +20,7 @@ module Jekyll
       @site = site
       @filter = HTML::Pipeline::EmojiFilter.new(nil, { :asset_root => src })
       site.pages.each { |page| emojify page }
-      site.posts.each { |page| emojify page }
+      site.posts.each { |post| emojify post }
     end
 
     def emojify(page)
