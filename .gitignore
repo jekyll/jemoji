@@ -3,3 +3,4 @@
 bin
 /*.gem
 Gemfile.lock
+_site/
