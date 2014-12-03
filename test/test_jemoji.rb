@@ -1,6 +1,7 @@
 require 'helper'
 
 class TestJemoji < Minitest::Test
+<<<<<<< HEAD
   FIXTURES_DIR = File.join(File.dirname(__FILE__), "fixtures")
 
   def setup
@@ -10,11 +11,25 @@ class TestJemoji < Minitest::Test
     @page = Jekyll::Page.new(@site, FIXTURES_DIR, "", "file.md")
     @page.instance_variable_set "@content", ":+1:"
     @site.pages.push @page
+=======
+  include JemojiTestHelpers
+
+  def setup
+    @site = fixture_site
+    @jemoji = @site.generators.find { |g| g.class.name.eql?("Jekyll::Jemoji") }
+    @site.read
+    @site.pages.first.content.strip!
+    @site.process
+    @page = @site.pages.first
+>>>>>>> Begin to revamp tests.
     @img = "<img class='emoji' title=':+1:' alt=':+1:' src='https://assets.github.com/images/icons/emoji/unicode/1f44d.png' height='20' width='20' align='absmiddle' />"
   end
 
+  def test_replace_emoji_with_img
+    assert_equal @img, @page.output
+  end
+
   should "replace emoji with img" do
-    @jemoji.instance_variable_set "@filter", HTML::Pipeline::EmojiFilter.new(nil, { :asset_root => @jemoji.src })
     @jemoji.emojify @page
     assert_equal @img, @page.content
   end
@@ -33,7 +48,7 @@ class TestJemoji < Minitest::Test
   end
 
   should "pull src from config" do
-    @site.config["emoji"] = {"src" => "/foo"}
+    @jemoji.config["emoji"] = {"src" => "/foo"}
     assert_match /^\/foo$/, @jemoji.src
   end
 

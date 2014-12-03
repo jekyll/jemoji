@@ -2,5 +2,5 @@
 .bundle
 bin
 /*.gem
+_site
 Gemfile.lock
-_site/
