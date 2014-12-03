@@ -5,7 +5,6 @@ require 'html/pipeline'
 module Jekyll
   class Emoji < Jekyll::Generator
     attr_reader :config
-
     safe true
 
     def initialize(config = {})
@@ -14,8 +13,8 @@ module Jekyll
 
     def src
       @src ||=
-        if @config.key?("emoji") && @config["emoji"].key?("src")
-          @config["emoji"]["src"]
+        if config.key?("emoji") && config["emoji"].key?("src")
+          config["emoji"]["src"]
         else
           "https://assets.github.com/images/icons/"
         end
