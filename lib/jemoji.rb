@@ -3,9 +3,12 @@ require 'gemoji'
 require 'html/pipeline'
 
 module Jekyll
-  class Emoji < Jekyll::Generator
+  class Emoji < Jekyll::Converter
     attr_reader :config
     safe true
+    priority :low
+
+    EMOJIABLE_EXTS = %w{.html .htm .md .markdown .mkdn .mkd .textile}
 
     def initialize(config = {})
       @config = config
@@ -24,14 +27,16 @@ module Jekyll
       @filter ||= HTML::Pipeline::EmojiFilter.new(nil, { :asset_root => src })
     end
 
-    def generate(site)
-      site.pages.each { |page| emojify page }
-      site.posts.each { |post| emojify post }
-      site.docs_to_write.each { |doc| emojify doc }
+    def matches(ext)
+      EMOJIABLE_EXTS.include?(ext.downcase)
     end
 
-    def emojify(page)
-      page.content = filter.emoji_image_filter(page.content)
+    def output_ext(*)
+      ".html".freeze
+    end
+
+    def convert(content)
+      filter.emoji_image_filter(content)
     end
   end
 end
