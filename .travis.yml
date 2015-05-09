@@ -7,6 +7,9 @@ rvm:
   - 2.0
 before_script: bundle update
 script: script/cibuild
+branches:
+  only:
+    - master
 notifications:
   irc:
     on_success: change
