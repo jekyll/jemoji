@@ -2,9 +2,9 @@ language: ruby
 sudo: false
 cache: bundler
 rvm:
-- 2.1
-- 2.0.0
-- 1.9.3
+  - 2.2
+  - 2.1
+  - 2.0
 before_script: bundle update
 script: script/cibuild
 notifications:
