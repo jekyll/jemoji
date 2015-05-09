@@ -1,3 +1,7 @@
+## HEAD
+
+  * Relax dependency on Jekyll to support >= 2.0. (#19)
+
 ## v0.4.0 / 2014-12-02
 
   * Emojify Collection Documents as well (#14)
