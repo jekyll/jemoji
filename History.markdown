@@ -1,6 +1,7 @@
 ## HEAD
 
   * Relax dependency on Jekyll to support >= 2.0. (#19)
+  * Travis: add 2.2 to build matrix, remove 1.9.3, only master branch build (#20)
 
 ## v0.4.0 / 2014-12-02
 
