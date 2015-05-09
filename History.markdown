@@ -1,4 +1,4 @@
-## HEAD
+## v0.5.0 / 2015-05-09
 
   * Relax dependency on Jekyll to support >= 2.0. (#19)
   * Travis: add 2.2 to build matrix, remove 1.9.3, only master branch build (#20)
