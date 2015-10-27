@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.files    = [ 'lib/jemoji.rb' ]
 
   s.add_dependency 'jekyll', '>= 2.0'
-  s.add_dependency 'html-pipeline', '~> 1.9'
+  s.add_dependency 'html-pipeline', '~> 2.2'
   s.add_dependency 'gemoji', '~> 2.0'
 
   s.add_development_dependency 'rake'
