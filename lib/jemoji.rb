@@ -25,13 +25,17 @@ module Jekyll
     end
 
     def generate(site)
-      site.pages.each { |page| emojify page }
-      site.posts.each { |post| emojify post }
+      site.posts.each { |doc| emojify doc } unless v3?
+      site.pages.each { |doc| emojify doc }
       site.docs_to_write.each { |doc| emojify doc }
     end
 
     def emojify(page)
       page.content = filter.emoji_image_filter(page.content)
+    end
+
+    def v3?
+      ::Jekyll::VERSION.to_f >= 3.0
     end
   end
 end

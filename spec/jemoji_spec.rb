@@ -2,7 +2,7 @@ RSpec.describe(Jekyll::Emoji) do
   let(:config_overrides) { {} }
   let(:configs) do
     Jekyll.configuration(config_overrides.merge({
-      'skip_config_files' => true,
+      'skip_config_files' => false,
       'collections' => { 'docs' => { 'output' => true }, 'secret' => {} },
       'source' => fixtures_dir,
       'destination' => fixtures_dir('_site')
@@ -12,10 +12,12 @@ RSpec.describe(Jekyll::Emoji) do
   let(:emoji) { site.generators.find { |g| g.class.name.eql?("Jekyll::Emoji") } }
   let(:default_src) { "https://assets.github.com/images/icons/" }
   let(:result) { "<img class='emoji' title=':+1:' alt=':+1:' src='#{default_src}emoji/unicode/1f44d.png' height='20' width='20' align='absmiddle' />" }
+  let(:v3?) { ::Jekyll::VERSION.to_f >= 3.0 }
+  let(:posts) { v3? ? site.posts.docs : site.posts }
 
   before(:each) do
     site.read
-    (site.pages + site.posts + site.docs_to_write).each { |p| p.content.strip! }
+    (site.pages + posts + site.docs_to_write).each { |p| p.content.strip! }
     site.generate
   end
 
@@ -37,7 +39,7 @@ RSpec.describe(Jekyll::Emoji) do
   end
 
   it "correctly replaces the emoji with the img in posts" do
-    expect(site.posts.first.content).to eql(result)
+    expect(posts.first.content).to eql(result)
   end
 
   it "correctly replaces the emoji with the img in pages" do
@@ -71,7 +73,7 @@ RSpec.describe(Jekyll::Emoji) do
     end
 
     it "respects the new base when emojifying" do
-      expect(site.posts.first.content).to eql(result.sub(default_src, emoji_src))
+      expect(posts.first.content).to eql(result.sub(default_src, emoji_src))
     end
   end
 end
