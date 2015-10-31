@@ -38,4 +38,13 @@ module Jekyll
       ::Jekyll::VERSION.to_f >= 3.0
     end
   end
+
+  module EmojiFilter
+    def emojify(input)
+      jemoji = Jekyll::Emoji.new(@context.registers[:site].config)
+      jemoji.filter.emoji_image_filter(input)
+    end
+  end
+
+  Liquid::Template.register_filter(Jekyll::EmojiFilter)
 end
