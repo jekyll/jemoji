@@ -3,13 +3,9 @@ require 'gemoji'
 require 'html/pipeline'
 
 module Jekyll
-  class Emoji < Jekyll::Generator
+  class Emoji < Jekyll::Converter
     attr_reader :config
     safe true
-
-    def initialize(config = {})
-      @config = config
-    end
 
     def src
       @src ||=
@@ -20,22 +16,18 @@ module Jekyll
         end
     end
 
-    def filter
-      @filter ||= HTML::Pipeline::EmojiFilter.new(nil, { :asset_root => src })
+    def matches(ext)
+      ext == ".html"
     end
 
-    def generate(site)
-      site.posts.each { |doc| emojify doc } unless v3?
-      site.pages.each { |doc| emojify doc }
-      site.docs_to_write.each { |doc| emojify doc }
+    def output_ext(ext)
+      ".html"
     end
 
-    def emojify(page)
-      page.content = filter.emoji_image_filter(page.content)
-    end
-
-    def v3?
-      ::Jekyll::VERSION.to_f >= 3.0
+    def convert(content)
+      HTML::Pipeline.new([HTML::Pipeline::EmojiFilter], {
+        asset_root: src
+      }).call(content)[:output].to_s
     end
   end
 end
