@@ -26,6 +26,15 @@ In any page or post, use emoji as you would normally, e.g.
 I give this plugin two :+1:!
 ```
 
+There is also a Liquid filter available, for dealing with emoji inside front matter
+
+```markdown
+---
+title: "A post title with emoji :rocket:"
+---
+{{ post.title | emojify }}
+```
+
 ## Customizing
 
 If you'd like to serve emoji images locally, or use a custom emoji source, you can specify so in your `_config.yml` file:
