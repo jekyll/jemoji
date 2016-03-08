@@ -1,3 +1,7 @@
+## HEAD
+
+  * jemoji as a hook: better guarding against accidents (#33)
+
 ## v0.5.0 / 2015-05-09
 
   * Relax dependency on Jekyll to support >= 2.0. (#19)
