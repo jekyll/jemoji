@@ -46,6 +46,11 @@ module Jekyll
         end
       end
 
+      # Public: Defines the conditions for a document to be emojiable.
+      #
+      # doc - the Jekyll::Document or Jekyll::Page
+      #
+      # Returns true if the doc is written & is HTML.
       def emojiable?(doc)
         (doc.class == Jekyll::Page || doc.write?) &&
           doc.output_ext == ".html" || (doc.permalink && doc.permalink.end_with?("/"))

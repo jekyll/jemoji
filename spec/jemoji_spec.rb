@@ -60,7 +60,7 @@ RSpec.describe(Jekyll::Emoji) do
     expect(basic_doc.output).to eql(para(result))
   end
 
-  it "correctly replaces the emoji with the img in collection documents" do
+  it "leaves non-HTML files alone" do
     expect(txt_doc.output).to eql(":+1:")
   end
 
