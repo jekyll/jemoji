@@ -1,4 +1,4 @@
-## HEAD
+## v0.6.0 / 2016-03-08
 
   * jemoji as a hook: better guarding against accidents (#33)
 
