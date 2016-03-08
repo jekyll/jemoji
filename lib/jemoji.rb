@@ -48,7 +48,7 @@ module Jekyll
 
       def emojiable?(doc)
         (doc.class == Jekyll::Page || doc.write?) &&
-          doc.output_ext == ".html"
+          doc.output_ext == ".html" || (doc.permalink && doc.permalink.end_with?("/"))
       end
     end
   end
