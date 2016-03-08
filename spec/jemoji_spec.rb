@@ -14,7 +14,10 @@ RSpec.describe(Jekyll::Emoji) do
   let(:site)        { Jekyll::Site.new(configs) }
   let(:default_src) { "https://assets.github.com/images/icons/" }
   let(:result)      { "<img class=\"emoji\" title=\":+1:\" alt=\":+1:\" src=\"#{default_src}emoji/unicode/1f44d.png\" height=\"20\" width=\"20\" align=\"absmiddle\">" }
-  let(:posts)       { site.posts.docs }
+
+  let(:posts)        { site.posts.docs }
+  let(:basic_post)   { posts[1] }
+  let(:complex_post) { posts[0] }
 
   def para(content)
     "<p>#{content}</p>\n"
@@ -35,7 +38,14 @@ RSpec.describe(Jekyll::Emoji) do
   end
 
   it "correctly replaces the emoji with the img in posts" do
-    expect(posts.first.output).to eql(para(result))
+    expect(basic_post.output).to eql(para(result))
+  end
+
+  it "doesn't replace emoji in a code block" do
+    expect(complex_post.output).to include(
+      "<span class=\"s2\">\":smile: every day\"</span>"
+    )
+    expect(complex_post.output).to include(result)
   end
 
   it "correctly replaces the emoji with the img in pages" do
@@ -69,7 +79,7 @@ RSpec.describe(Jekyll::Emoji) do
     end
 
     it "respects the new base when emojifying" do
-      expect(posts.first.output).to eql(para(result.sub(default_src, emoji_src)))
+      expect(basic_post.output).to eql(para(result.sub(default_src, emoji_src)))
     end
   end
 end
