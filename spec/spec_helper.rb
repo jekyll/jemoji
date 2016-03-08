@@ -6,6 +6,10 @@ RSpec.configure do |config|
     File.join(FIXTURES_DIR, *paths)
   end
 
+  def find_by_title(docs, title)
+    docs.find { |d| d.title == title }
+  end
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
