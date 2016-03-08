@@ -16,8 +16,12 @@ RSpec.describe(Jekyll::Emoji) do
   let(:result)      { "<img class=\"emoji\" title=\":+1:\" alt=\":+1:\" src=\"#{default_src}emoji/unicode/1f44d.png\" height=\"20\" width=\"20\" align=\"absmiddle\">" }
 
   let(:posts)        { site.posts.docs }
-  let(:basic_post)   { posts[1] }
-  let(:complex_post) { posts[0] }
+  let(:basic_post)   { find_by_title(posts, "Refactor") }
+  let(:complex_post) { find_by_title(posts, "Code Block") }
+
+  let(:basic_doc) { find_by_title(site.collections["docs"].docs, "File") }
+  let(:doc_with_liquid) { find_by_title(site.collections["docs"].docs, "With Liquid") }
+  let(:txt_doc) { find_by_title(site.collections["docs"].docs, "Don't Touch Me") }
 
   def para(content)
     "<p>#{content}</p>\n"
@@ -53,7 +57,11 @@ RSpec.describe(Jekyll::Emoji) do
   end
 
   it "correctly replaces the emoji with the img in collection documents" do
-    expect(site.collections["docs"].docs.first.output).to eql(para(result))
+    expect(basic_doc.output).to eql(para(result))
+  end
+
+  it "correctly replaces the emoji with the img in collection documents" do
+    expect(txt_doc.output).to eql(":+1:")
   end
 
   it "does not replace the emoji if the collection document is not to be output" do
@@ -61,7 +69,7 @@ RSpec.describe(Jekyll::Emoji) do
   end
 
   it "does not mangle liquid templates" do
-    expect(site.collections["docs"].docs.last.output).to eql(
+    expect(doc_with_liquid.output).to eql(
       para("#{result} <a href=\"/docs/with_liquid.html\">_docs/with_liquid.md</a>")
     )
   end

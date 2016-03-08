@@ -45,10 +45,15 @@ module Jekyll
           GITHUB_DOT_COM_ASSET_ROOT
         end
       end
+
+      def emojiable?(doc)
+        (doc.class == Jekyll::Page || doc.write?) &&
+          doc.output_ext == ".html"
+      end
     end
   end
 end
 
 Jekyll::Hooks.register [:pages, :documents], :post_render do |doc|
-  Jekyll::Emoji.emojify(doc) if doc.class == Jekyll::Page || doc.write?
+  Jekyll::Emoji.emojify(doc) if Jekyll::Emoji.emojiable?(doc)
 end
