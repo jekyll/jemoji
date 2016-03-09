@@ -1,4 +1,4 @@
-## HEAD
+## v0.6.1 / 2016-03-09
 
   * Handle subclassing of Jekyll::Page (#34)
 
