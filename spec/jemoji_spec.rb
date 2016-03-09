@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 RSpec.describe(Jekyll::Emoji) do
   Jekyll.logger.log_level = :error
 

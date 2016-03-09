@@ -52,7 +52,7 @@ module Jekyll
       #
       # Returns true if the doc is written & is HTML.
       def emojiable?(doc)
-        (doc.class == Jekyll::Page || doc.write?) &&
+        (doc.is_a?(Jekyll::Page) || doc.write?) &&
           doc.output_ext == ".html" || (doc.permalink && doc.permalink.end_with?("/"))
       end
     end
