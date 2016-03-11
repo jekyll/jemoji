@@ -8,10 +8,11 @@ module Jekyll
 
     class << self
       def emojify(doc)
+        return unless doc.output =~ HTML::Pipeline::EmojiFilter.emoji_pattern
         src = emoji_src(doc.site.config)
         if doc.output =~ /<body/
           parsed_doc = Nokogiri::HTML::Document.parse(doc.output)
-          body = parsed_doc.at_css('body')
+          body       = parsed_doc.at_css('body')
           body.replace filter_with_emoji(src).call(body.to_html)[:output]
           doc.output = parsed_doc.to_html
         else
