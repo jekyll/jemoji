@@ -21,6 +21,9 @@ RSpec.describe(Jekyll::Emoji) do
   let(:basic_post)   { find_by_title(posts, "Refactor") }
   let(:complex_post) { find_by_title(posts, "Code Block") }
 
+  let(:pages) { site.pages }
+  let(:index) { site.pages.find { |page| page["title"] == "Jemoji" } }
+
   let(:basic_doc) { find_by_title(site.collections["docs"].docs, "File") }
   let(:doc_with_liquid) { find_by_title(site.collections["docs"].docs, "With Liquid") }
   let(:txt_doc) { find_by_title(site.collections["docs"].docs, "Don't Touch Me") }
@@ -55,7 +58,7 @@ RSpec.describe(Jekyll::Emoji) do
   end
 
   it "correctly replaces the emoji with the img in pages" do
-    expect(site.pages.first.output).to include(para(result))
+    expect(index.output).to include(para(result))
   end
 
   it "correctly replaces the emoji with the img in collection documents" do
@@ -77,7 +80,7 @@ RSpec.describe(Jekyll::Emoji) do
   end
 
   it "does not managle layouts" do
-    expect(site.pages.first.output).to eql(index_fixture)
+    expect(index.output).to eql(index_fixture)
   end
 
   context "with a different base for jemoji" do
