@@ -33,6 +33,7 @@ RSpec.describe(Jekyll::Emoji) do
   end
 
   before(:each) do
+    site.reset
     site.read
     (site.pages + posts + site.docs_to_write).each { |p| p.content.strip! }
     site.render
