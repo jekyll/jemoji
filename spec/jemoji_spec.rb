@@ -55,7 +55,7 @@ RSpec.describe(Jekyll::Emoji) do
   end
 
   it "correctly replaces the emoji with the img in pages" do
-    expect(site.pages.first.output).to eql(para(result))
+    expect(site.pages.first.output).to include(para(result))
   end
 
   it "correctly replaces the emoji with the img in collection documents" do
@@ -74,6 +74,10 @@ RSpec.describe(Jekyll::Emoji) do
     expect(doc_with_liquid.output).to eql(
       para("#{result} <a href=\"/docs/with_liquid.html\">_docs/with_liquid.md</a>")
     )
+  end
+
+  it "does not managle layouts" do
+    expect(site.pages.first.output).to eql(index_fixture)
   end
 
   context "with a different base for jemoji" do
