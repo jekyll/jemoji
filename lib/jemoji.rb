@@ -1,5 +1,6 @@
 require 'jekyll'
 require 'gemoji'
+require 'gemoji-parser'
 require 'html/pipeline'
 
 module Jekyll
@@ -9,6 +10,8 @@ module Jekyll
     class << self
       def emojify(doc)
         src = emoji_src(doc.site.config)
+        # tokenize the raw input unicode emoji into token symbol form
+        doc.output = EmojiParser.tokenize(doc.output)
         doc.output = filter_with_emoji(src).call(doc.output)[:output].to_s
       end
 
