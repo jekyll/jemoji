@@ -1,4 +1,4 @@
-## HEAD
+## v0.6.2 / 2016-03-19
 
   * Don't strip html, body, and head tags (#37)
   * Use String#include instead of String#=~ (#39)
