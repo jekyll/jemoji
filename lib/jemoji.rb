@@ -5,12 +5,13 @@ require 'html/pipeline'
 module Jekyll
   class Emoji
     GITHUB_DOT_COM_ASSET_ROOT = "https://assets.github.com/images/icons/".freeze
+    BODY_START_TAG = "<body".freeze
 
     class << self
       def emojify(doc)
         return unless doc.output =~ HTML::Pipeline::EmojiFilter.emoji_pattern
         src = emoji_src(doc.site.config)
-        if doc.output =~ /<\s*body/
+        if doc.output.include? BODY_START_TAG
           parsed_doc    = Nokogiri::HTML::Document.parse(doc.output)
           body          = parsed_doc.at_css('body')
           body.children = filter_with_emoji(src).call(body.inner_html)[:output].to_s
