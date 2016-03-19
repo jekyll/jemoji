@@ -1,3 +1,7 @@
+## HEAD
+
+  * Don't strip html, body, and head tags (#37)
+
 ## v0.6.1 / 2016-03-09
 
   * Handle subclassing of Jekyll::Page (#34)
