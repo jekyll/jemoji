@@ -10,6 +10,10 @@ RSpec.configure do |config|
     docs.find { |d| d.title == title }
   end
 
+  def index_fixture
+    File.read File.expand_path("./fixtures/index.html", File.dirname(__FILE__))
+  end
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

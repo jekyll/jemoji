@@ -8,8 +8,16 @@ module Jekyll
 
     class << self
       def emojify(doc)
+        return unless doc.output =~ HTML::Pipeline::EmojiFilter.emoji_pattern
         src = emoji_src(doc.site.config)
-        doc.output = filter_with_emoji(src).call(doc.output)[:output].to_s
+        if doc.output =~ /<\s*body/
+          parsed_doc    = Nokogiri::HTML::Document.parse(doc.output)
+          body          = parsed_doc.at_css('body')
+          body.children = filter_with_emoji(src).call(body.inner_html)[:output].to_s
+          doc.output    = parsed_doc.to_html
+        else
+          doc.output = filter_with_emoji(src).call(doc.output)[:output].to_s
+        end
       end
 
       # Public: Create or fetch the filter for the given {{src}} asset root.
