@@ -52,6 +52,10 @@ RSpec.describe(Jekyll::Emoji) do
   it "has the correct default source when ASSET_HOST_URL is set" do
     ENV["ASSET_HOST_URL"] = asset_host_url
     expect(emoji.emoji_src).to eql(default_src_from_env)
+
+    ENV["ASSET_HOST_URL"] = "#{asset_host_url}/"
+    expect(emoji.emoji_src).to eql(default_src_from_env)
+
     ENV["ASSET_HOST_URL"] = nil
   end
 
