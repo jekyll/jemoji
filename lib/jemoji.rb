@@ -4,7 +4,8 @@ require 'html/pipeline'
 
 module Jekyll
   class Emoji
-    GITHUB_DOT_COM_ASSET_ROOT = "https://assets.github.com/images/icons/".freeze
+    GITHUB_DOT_COM_ASSET_HOST_URL = "https://assets.github.com".freeze
+    ASSET_PATH = "/images/icons/".freeze
     BODY_START_TAG = "<body".freeze
 
     class << self
@@ -51,7 +52,7 @@ module Jekyll
         if config.key?("emoji") && config["emoji"].key?("src")
           config["emoji"]["src"]
         else
-          GITHUB_DOT_COM_ASSET_ROOT
+          default_asset_root
         end
       end
 
@@ -63,6 +64,17 @@ module Jekyll
       def emojiable?(doc)
         (doc.is_a?(Jekyll::Page) || doc.write?) &&
           doc.output_ext == ".html" || (doc.permalink && doc.permalink.end_with?("/"))
+      end
+
+      private
+      def default_asset_root
+        if !ENV["ASSET_HOST_URL"].to_s.empty?
+          # Ensure that any trailing "/" is trimmed
+          asset_host_url = ENV["ASSET_HOST_URL"].chomp("/")
+          "#{asset_host_url}#{ASSET_PATH}"
+        else
+          "#{GITHUB_DOT_COM_ASSET_HOST_URL}#{ASSET_PATH}"
+        end
       end
     end
   end
