@@ -67,6 +67,7 @@ module Jekyll
       end
 
       private
+
       def default_asset_root
         if !ENV["ASSET_HOST_URL"].to_s.empty?
           # Ensure that any trailing "/" is trimmed

@@ -12,12 +12,10 @@ RSpec.describe(Jekyll::Emoji) do
       'destination'       => fixtures_dir('_site')
     }))
   end
-  let(:emoji)                { described_class }
-  let(:site)                 { Jekyll::Site.new(configs) }
-  let(:default_src)          { "https://assets.github.com/images/icons/" }
-  let(:asset_host_url)       { "https://assets.github.vm" }
-  let(:default_src_from_env) { "https://assets.github.vm/images/icons/" }
-  let(:result)               { "<img class=\"emoji\" title=\":+1:\" alt=\":+1:\" src=\"#{default_src}emoji/unicode/1f44d.png\" height=\"20\" width=\"20\" align=\"absmiddle\">" }
+  let(:emoji)       { described_class }
+  let(:site)        { Jekyll::Site.new(configs) }
+  let(:default_src) { "https://assets.github.com/images/icons/" }
+  let(:result)      { "<img class=\"emoji\" title=\":+1:\" alt=\":+1:\" src=\"#{default_src}emoji/unicode/1f44d.png\" height=\"20\" width=\"20\" align=\"absmiddle\">" }
 
   let(:posts)        { site.posts.docs }
   let(:basic_post)   { find_by_title(posts, "Refactor") }
@@ -47,16 +45,6 @@ RSpec.describe(Jekyll::Emoji) do
 
   it "has a default source" do
     expect(emoji.emoji_src).to eql(default_src)
-  end
-
-  it "has the correct default source when ASSET_HOST_URL is set" do
-    ENV["ASSET_HOST_URL"] = asset_host_url
-    expect(emoji.emoji_src).to eql(default_src_from_env)
-
-    ENV["ASSET_HOST_URL"] = "#{asset_host_url}/"
-    expect(emoji.emoji_src).to eql(default_src_from_env)
-
-    ENV["ASSET_HOST_URL"] = nil
   end
 
   it "correctly replaces the emoji with the img in posts" do
@@ -110,6 +98,28 @@ RSpec.describe(Jekyll::Emoji) do
 
     it "respects the new base when emojifying" do
       expect(basic_post.output).to eql(para(result.sub(default_src, emoji_src)))
+    end
+  end
+
+  context "with the ASSET_HOST_URL environment variable set" do
+    let(:asset_host_url)       { "https://assets.github.vm" }
+    let(:default_src_from_env) { "https://assets.github.vm/images/icons/" }
+
+    before(:each) { ENV["ASSET_HOST_URL"] = asset_host_url }
+    after(:each) { ENV.delete("ASSET_HOST_URL") }
+
+    it "has the correct default source when ASSET_HOST_URL is set" do
+      expect(emoji.emoji_src).to eql(default_src_from_env)
+    end
+
+    it "trims a trailing / if necessary" do
+      ENV["ASSET_HOST_URL"] = "#{asset_host_url}/"
+      expect(emoji.emoji_src).to eql(default_src_from_env)
+    end
+
+    it "falls back to using the default if ASSET_HOST_URL is empty" do
+      ENV["ASSET_HOST_URL"] = ""
+      expect(emoji.emoji_src).to eql(default_src)
     end
   end
 end
