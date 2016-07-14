@@ -4,7 +4,7 @@ require 'html/pipeline'
 
 module Jekyll
   class Emoji
-    GITHUB_DOT_COM_ASSET_HOST_URL = "https://assets.github.com".freeze
+    GITHUB_DOT_COM_ASSET_HOST_URL = "https://assets-cdn.github.com".freeze
     ASSET_PATH = "/images/icons/".freeze
     BODY_START_TAG = "<body".freeze
 
@@ -24,7 +24,7 @@ module Jekyll
 
       # Public: Create or fetch the filter for the given {{src}} asset root.
       #
-      # src - the asset root URL (e.g. https://assets.github.com/images/icons/)
+      # src - the asset root URL (e.g. https://assets-cdn.github.com/images/icons/)
       #
       # Returns an HTML::Pipeline instance for the given asset root.
       def filter_with_emoji(src)
@@ -46,8 +46,9 @@ module Jekyll
       #
       # config - the hash-like configuration of the document's site
       #
-      # Returns a full URL to use as the asset root URL. Defaults to
-      # the assets.github.com emoji root.
+      # Returns a full URL to use as the asset root URL. Defaults to the root
+      # URL for assets provided by an ASSET_HOST_URL environment variable,
+      # otherwise the root URL for emoji assets at assets-cdn.github.com.
       def emoji_src(config = {})
         if config.key?("emoji") && config["emoji"].key?("src")
           config["emoji"]["src"]
