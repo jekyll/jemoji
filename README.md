@@ -26,6 +26,12 @@ In any page or post, use emoji as you would normally, e.g.
 I give this plugin two :+1:!
 ```
 
+## Emoji images
+
+For GitHub Pages sites built on GitHub.com, emoji images are served from the GitHub.com CDN, with a base URL of `https://assets-cdn.github.com`, which results in emoji image URLs like `https://assets-cdn.github.com/images/icons/emoji/unicode/1f604.png`.
+
+On GitHub Enterprise installs, page builds receive the `ASSET_HOST_URL` environment variable, which contain a value like `https://assets.ghe.my-company.com`. This results in emoji images for GitHub Pages sites built on a GitHub Enterprise install being served at URLs like `https://assets.ghe.my-company.com/images/icons/emoji/unicode/1f604.png`.
+
 ## Customizing
 
 If you'd like to serve emoji images locally, or use a custom emoji source, you can specify so in your `_config.yml` file:

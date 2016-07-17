@@ -4,7 +4,8 @@ require 'html/pipeline'
 
 module Jekyll
   class Emoji
-    GITHUB_DOT_COM_ASSET_ROOT = "https://assets.github.com/images/icons/".freeze
+    GITHUB_DOT_COM_ASSET_HOST_URL = "https://assets-cdn.github.com".freeze
+    ASSET_PATH = "/images/icons/".freeze
     BODY_START_TAG = "<body".freeze
 
     class << self
@@ -23,7 +24,7 @@ module Jekyll
 
       # Public: Create or fetch the filter for the given {{src}} asset root.
       #
-      # src - the asset root URL (e.g. https://assets.github.com/images/icons/)
+      # src - the asset root URL (e.g. https://assets-cdn.github.com/images/icons/)
       #
       # Returns an HTML::Pipeline instance for the given asset root.
       def filter_with_emoji(src)
@@ -45,13 +46,14 @@ module Jekyll
       #
       # config - the hash-like configuration of the document's site
       #
-      # Returns a full URL to use as the asset root URL. Defaults to
-      # the assets.github.com emoji root.
+      # Returns a full URL to use as the asset root URL. Defaults to the root
+      # URL for assets provided by an ASSET_HOST_URL environment variable,
+      # otherwise the root URL for emoji assets at assets-cdn.github.com.
       def emoji_src(config = {})
         if config.key?("emoji") && config["emoji"].key?("src")
           config["emoji"]["src"]
         else
-          GITHUB_DOT_COM_ASSET_ROOT
+          default_asset_root
         end
       end
 
@@ -63,6 +65,18 @@ module Jekyll
       def emojiable?(doc)
         (doc.is_a?(Jekyll::Page) || doc.write?) &&
           doc.output_ext == ".html" || (doc.permalink && doc.permalink.end_with?("/"))
+      end
+
+      private
+
+      def default_asset_root
+        if !ENV["ASSET_HOST_URL"].to_s.empty?
+          # Ensure that any trailing "/" is trimmed
+          asset_host_url = ENV["ASSET_HOST_URL"].chomp("/")
+          "#{asset_host_url}#{ASSET_PATH}"
+        else
+          "#{GITHUB_DOT_COM_ASSET_HOST_URL}#{ASSET_PATH}"
+        end
       end
     end
   end
