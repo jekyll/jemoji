@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'jemoji'
   s.summary     = 'GitHub-flavored emoji plugin for Jekyll'
-  s.version     = '0.6.2'
+  s.version     = '0.7.0'
   s.authors     = ['GitHub, Inc.']
   s.email       = 'support@github.com'
 

@@ -1,4 +1,4 @@
-## HEAD
+## v0.7.0 / 2016-07-17
 
   * Add support for setting a default asset host URL in an ASSET_HOST_URL environment variable (#45)
   * Lock activesupport down to v4.x (#47)
