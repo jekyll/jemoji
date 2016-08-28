@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'jekyll', '>= 3.0'
   s.add_dependency 'html-pipeline', '~> 2.2'
-  s.add_dependency 'activesupport', '~> 4.0'
+  s.add_dependency 'activesupport', '~> 5.0'
   s.add_dependency 'gemoji', '~> 2.0'
 
   s.add_development_dependency 'rake'
