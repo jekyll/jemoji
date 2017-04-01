@@ -30,7 +30,7 @@ module Jekyll
       def filter_with_emoji(src)
         filters[src] ||= HTML::Pipeline.new([
           HTML::Pipeline::EmojiFilter
-        ], { :asset_root => src })
+        ], { :asset_root => src, img_attrs: Hash(align: nil) })
       end
 
       # Public: Filters hash where the key is the asset root source.
