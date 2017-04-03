@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 RSpec.describe(Jekyll::Emoji) do
   Jekyll.logger.log_level = :error
@@ -6,10 +6,10 @@ RSpec.describe(Jekyll::Emoji) do
   let(:config_overrides) { {} }
   let(:configs) do
     Jekyll.configuration(config_overrides.merge({
-      'skip_config_files' => false,
-      'collections'       => { 'docs' => { 'output' => true }, 'secret' => {} },
-      'source'            => fixtures_dir,
-      'destination'       => fixtures_dir('_site')
+      "skip_config_files" => false,
+      "collections"       => { "docs" => { "output" => true }, "secret" => {} },
+      "source"            => fixtures_dir,
+      "destination"       => fixtures_dir("_site"),
     }))
   end
   let(:emoji)       { described_class }
@@ -88,7 +88,7 @@ RSpec.describe(Jekyll::Emoji) do
     let(:emoji_src) { "http://mine.club/" }
     let(:config_overrides) do
       {
-        "emoji" => { "src" => emoji_src }
+        "emoji" => { "src" => emoji_src },
       }
     end
 

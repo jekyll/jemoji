@@ -1,7 +1,7 @@
-require File.expand_path('../../lib/jemoji.rb', __FILE__)
+require File.expand_path("../../lib/jemoji.rb", __FILE__)
 
 RSpec.configure do |config|
-  FIXTURES_DIR = File.expand_path('../fixture_site', __FILE__)
+  FIXTURES_DIR = File.expand_path("../fixture_site", __FILE__)
   def fixtures_dir(*paths)
     File.join(FIXTURES_DIR, *paths)
   end
