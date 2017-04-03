@@ -1,3 +1,5 @@
 #! /bin/sh
 
 bundle exec rspec --color --require spec_helper $@
+bundle exec rubocop -S -D
+bundle exec gem build jemoji.gemspec

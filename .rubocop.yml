@@ -1,0 +1,2 @@
+inherit_gem:
+  jekyll: .rubocop.yml
