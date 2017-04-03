@@ -7,7 +7,7 @@ RSpec.configure do |config|
   end
 
   def find_by_title(docs, title)
-    docs.find { |d| d.title == title }
+    docs.find { |d| d.data["title"] == title }
   end
 
   def index_fixture

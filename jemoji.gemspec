@@ -9,13 +9,11 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.files    = [ "lib/jemoji.rb" ]
 
-  s.add_dependency "jekyll", ">= 3.0"
+  s.add_dependency "jekyll", "~> 3.0"
   s.add_dependency "html-pipeline", "~> 2.2"
   s.add_dependency "activesupport", "~> 4.0"
   s.add_dependency "gemoji", "~> 3.0"
 
-  s.add_development_dependency "rake"
-  s.add_development_dependency "rdoc"
   s.add_development_dependency "rspec", "~> 3.0"
   s.add_development_dependency "rubocop", "~> 0.38"
 end
