@@ -1,6 +1,6 @@
-require 'jekyll'
-require 'gemoji'
-require 'html/pipeline'
+require "jekyll"
+require "gemoji"
+require "html/pipeline"
 
 module Jekyll
   class Emoji
@@ -14,7 +14,7 @@ module Jekyll
         src = emoji_src(doc.site.config)
         if doc.output.include? BODY_START_TAG
           parsed_doc    = Nokogiri::HTML::Document.parse(doc.output)
-          body          = parsed_doc.at_css('body')
+          body          = parsed_doc.at_css("body")
           body.children = filter_with_emoji(src).call(body.inner_html)[:output].to_s
           doc.output    = parsed_doc.to_html
         else
@@ -29,8 +29,8 @@ module Jekyll
       # Returns an HTML::Pipeline instance for the given asset root.
       def filter_with_emoji(src)
         filters[src] ||= HTML::Pipeline.new([
-          HTML::Pipeline::EmojiFilter
-        ], { :asset_root => src, img_attrs: { align: nil } })
+          HTML::Pipeline::EmojiFilter,
+        ], { :asset_root => src, :img_attrs => { :align => nil } })
       end
 
       # Public: Filters hash where the key is the asset root source.

@@ -1,0 +1,15 @@
+inherit_gem:
+  jekyll: .rubocop.yml
+
+Metrics/LineLength:
+  Exclude:
+    - spec/**/*
+    - jemoji.gemspec
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+
+Style/IndentHeredoc:
+  Exclude:
+    - spec/**/*
