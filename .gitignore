@@ -1,6 +1,7 @@
-/vendor/gems
-.bundle
 bin
+.bundle
 /*.gem
-_site
 Gemfile.lock
+/pkg
+_site
+/vendor/gems
