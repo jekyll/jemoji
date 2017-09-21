@@ -87,6 +87,6 @@ module Jekyll
   end
 end
 
-Jekyll::Hooks.register %i(pages documents), :post_render do |doc|
+Jekyll::Hooks.register %i[pages documents], :post_render do |doc|
   Jekyll::Emoji.emojify(doc) if Jekyll::Emoji.emojiable?(doc)
 end
