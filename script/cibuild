@@ -1,3 +1,5 @@
 #! /bin/sh
 
-bundle exec rspec --color --require spec_helper $@
+bundle exec rspec $@
+script/fmt -S -D
+bundle exec gem build jemoji.gemspec

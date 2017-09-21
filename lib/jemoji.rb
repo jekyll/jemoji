@@ -1,6 +1,6 @@
-require 'jekyll'
-require 'gemoji'
-require 'html/pipeline'
+require "jekyll"
+require "gemoji"
+require "html/pipeline"
 
 module Jekyll
   class Emoji
@@ -11,15 +11,12 @@ module Jekyll
     class << self
       def emojify(doc)
         return unless doc.output =~ HTML::Pipeline::EmojiFilter.emoji_pattern
-        src = emoji_src(doc.site.config)
-        if doc.output.include? BODY_START_TAG
-          parsed_doc    = Nokogiri::HTML::Document.parse(doc.output)
-          body          = parsed_doc.at_css('body')
-          body.children = filter_with_emoji(src).call(body.inner_html)[:output].to_s
-          doc.output    = parsed_doc.to_html
-        else
-          doc.output = filter_with_emoji(src).call(doc.output)[:output].to_s
-        end
+        doc.output = if doc.output.include? BODY_START_TAG
+                       replace_document_body(doc)
+                     else
+                       src = emoji_src(doc.site.config)
+                       filter_with_emoji(src).call(doc.output)[:output].to_s
+                     end
       end
 
       # Public: Create or fetch the filter for the given {{src}} asset root.
@@ -29,8 +26,8 @@ module Jekyll
       # Returns an HTML::Pipeline instance for the given asset root.
       def filter_with_emoji(src)
         filters[src] ||= HTML::Pipeline.new([
-          HTML::Pipeline::EmojiFilter
-        ], { :asset_root => src, img_attrs: { align: nil } })
+          HTML::Pipeline::EmojiFilter,
+        ], { :asset_root => src, :img_attrs => { :align => nil } })
       end
 
       # Public: Filters hash where the key is the asset root source.
@@ -78,10 +75,18 @@ module Jekyll
           "#{GITHUB_DOT_COM_ASSET_HOST_URL}#{ASSET_PATH}"
         end
       end
+
+      def replace_document_body(doc)
+        src           = emoji_src(doc.site.config)
+        parsed_doc    = Nokogiri::HTML::Document.parse(doc.output)
+        body          = parsed_doc.at_css("body")
+        body.children = filter_with_emoji(src).call(body.inner_html)[:output].to_s
+        parsed_doc.to_html
+      end
     end
   end
 end
 
-Jekyll::Hooks.register [:pages, :documents], :post_render do |doc|
+Jekyll::Hooks.register %i[pages documents], :post_render do |doc|
   Jekyll::Emoji.emojify(doc) if Jekyll::Emoji.emojiable?(doc)
 end

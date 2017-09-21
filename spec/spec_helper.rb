@@ -1,13 +1,14 @@
-require File.expand_path('../lib/jemoji.rb', __dir__)
+require File.expand_path("../lib/jemoji.rb", __dir__)
 
 RSpec.configure do |config|
-  FIXTURES_DIR = File.expand_path('fixture_site', __dir__)
+  FIXTURES_DIR = File.expand_path("fixture_site", __dir__)
+
   def fixtures_dir(*paths)
     File.join(FIXTURES_DIR, *paths)
   end
 
   def find_by_title(docs, title)
-    docs.find { |d| d.title == title }
+    docs.find { |d| d.data["title"] == title }
   end
 
   def index_fixture

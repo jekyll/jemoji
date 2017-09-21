@@ -1,4 +1,6 @@
-require 'spec_helper'
+# frozen_string_literal: true
+
+require "spec_helper"
 
 RSpec.describe(Jekyll::Emoji) do
   Jekyll.logger.log_level = :error
@@ -6,16 +8,20 @@ RSpec.describe(Jekyll::Emoji) do
   let(:config_overrides) { {} }
   let(:configs) do
     Jekyll.configuration(config_overrides.merge({
-      'skip_config_files' => false,
-      'collections'       => { 'docs' => { 'output' => true }, 'secret' => {} },
-      'source'            => fixtures_dir,
-      'destination'       => fixtures_dir('_site')
+      "skip_config_files" => false,
+      "collections"       => { "docs" => { "output" => true }, "secret" => {} },
+      "source"            => fixtures_dir,
+      "destination"       => fixtures_dir("_site"),
     }))
   end
   let(:emoji)       { described_class }
   let(:site)        { Jekyll::Site.new(configs) }
   let(:default_src) { "https://assets-cdn.github.com/images/icons/" }
-  let(:result)      { "<img class=\"emoji\" title=\":+1:\" alt=\":+1:\" src=\"#{default_src}emoji/unicode/1f44d.png\" height=\"20\" width=\"20\">" }
+  let(:result) do
+    <<-STR.strip
+    <img class="emoji" title=":+1:" alt=":+1:" src="#{default_src}emoji/unicode/1f44d.png" height="20" width="20">
+    STR
+  end
 
   let(:posts)        { site.posts.docs }
   let(:basic_post)   { find_by_title(posts, "Refactor") }
@@ -88,7 +94,7 @@ RSpec.describe(Jekyll::Emoji) do
     let(:emoji_src) { "http://mine.club/" }
     let(:config_overrides) do
       {
-        "emoji" => { "src" => emoji_src }
+        "emoji" => { "src" => emoji_src },
       }
     end
 
