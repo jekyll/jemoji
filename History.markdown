@@ -1,5 +1,7 @@
 ## HEAD
 
+  * Bump Ruby versions for Travis (#66)
+
 ### Minor Enhancements
 
   * Remove align attribute for HTML5 compability (#58)
