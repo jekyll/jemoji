@@ -1,6 +1,7 @@
 ## HEAD
 
   * Bump Ruby versions for Travis (#66)
+  * Require activesupport >= 4.2.9 (#62)
 
 ### Minor Enhancements
 
