@@ -1,7 +1,8 @@
-require File.expand_path("../../lib/jemoji.rb", __FILE__)
+require File.expand_path('../lib/jemoji.rb', __dir__)
 
 RSpec.configure do |config|
-  FIXTURES_DIR = File.expand_path("../fixture_site", __FILE__)
+  FIXTURES_DIR = File.expand_path('fixture_site', __dir__)
+  
   def fixtures_dir(*paths)
     File.join(FIXTURES_DIR, *paths)
   end
@@ -11,7 +12,7 @@ RSpec.configure do |config|
   end
 
   def index_fixture
-    File.read File.expand_path("./fixtures/index.html", File.dirname(__FILE__))
+    File.read File.expand_path("fixtures/index.html", __dir__)
   end
 
   # rspec-expectations config goes here. You can use an alternate
