@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 RSpec.describe(Jekyll::Emoji) do
@@ -16,9 +18,9 @@ RSpec.describe(Jekyll::Emoji) do
   let(:site)        { Jekyll::Site.new(configs) }
   let(:default_src) { "https://assets-cdn.github.com/images/icons/" }
   let(:result) do
-    result = "<img class=\"emoji\" title=\":+1:\" alt=\":+1:\" "
-    result << "src=\"#{default_src}emoji/unicode/1f44d.png\" "
-    result << "height=\"20\" width=\"20\">"
+    <<-STR.strip
+    <img class="emoji" title=":+1:" alt=":+1:" src="#{default_src}emoji/unicode/1f44d.png" height="20" width="20">
+    STR
   end
 
   let(:posts)        { site.posts.docs }
