@@ -1,3 +1,7 @@
+## HEAD
+
+  * Define path with __dir__ (#64)
+
 ## v0.8.1 / 2017-09-21
 
   * Remove align attribute for HTML5 compability (#58)
