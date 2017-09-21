@@ -1,6 +1,7 @@
 ## HEAD
 
   * Define path with __dir__ (#64)
+  * Add Rubocop (#59)
 
 ## v0.8.1 / 2017-09-21
 
