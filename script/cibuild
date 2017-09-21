@@ -1,5 +1,5 @@
 #! /bin/sh
 
 bundle exec rspec $@
-bundle exec rubocop -S -D
+script/fmt -S -D
 bundle exec gem build jemoji.gemspec
