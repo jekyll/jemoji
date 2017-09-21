@@ -18,7 +18,7 @@ RSpec.describe(Jekyll::Emoji) do
   let(:result) do
     result = "<img class=\"emoji\" title=\":+1:\" alt=\":+1:\" "
     result << "src=\"#{default_src}emoji/unicode/1f44d.png\" "
-    result << "height=\"20\" width=\"20\" align=\"absmiddle\">"
+    result << "height=\"20\" width=\"20\">"
   end
 
   let(:posts)        { site.posts.docs }

@@ -1,3 +1,11 @@
+## HEAD
+
+  * Bump Ruby versions for Travis (#66)
+
+### Minor Enhancements
+
+  * Remove align attribute for HTML5 compability (#58)
+
 ## v0.8.0 / 2017-02-03
 
   * Update to Gemoji 3.0. (#55)
