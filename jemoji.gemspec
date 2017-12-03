@@ -1,7 +1,13 @@
+# frozen_string_literal: true
+
+lib = File.expand_path("lib", __dir__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require "jemoji/version"
+
 Gem::Specification.new do |s|
   s.name        = "jemoji"
   s.summary     = "GitHub-flavored emoji plugin for Jekyll"
-  s.version     = "0.8.1"
+  s.version     = Jekyll::Jemoji::VERSION
   s.authors     = ["GitHub, Inc."]
   s.email       = "support@github.com"
 
