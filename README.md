@@ -16,9 +16,11 @@ gem 'jemoji'
 And add the following to your site's `_config.yml`
 
 ```yml
-gems:
+plugins:
   - jemoji
 ```
+
+💡 If you are using a Jekyll version less than 3.5.0, use the `gems` key instead of `plugins`.
 
 In any page or post, use emoji as you would normally, e.g.
 
