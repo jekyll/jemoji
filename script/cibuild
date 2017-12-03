@@ -1,5 +1,4 @@
 #! /bin/sh
 
-bundle exec rspec $@
-script/fmt -S -D
-bundle exec gem build jemoji.gemspec
+script/fmt
+script/test
