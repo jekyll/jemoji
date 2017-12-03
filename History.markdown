@@ -2,6 +2,8 @@
 
   * Define path with __dir__ (#64)
   * Add Rubocop (#59)
+  * Drop Support for Jekyll 2
+  * Require Ruby 2.1
 
 ## v0.8.1 / 2017-09-21
 
