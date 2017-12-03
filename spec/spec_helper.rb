@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require File.expand_path("../lib/jemoji.rb", __dir__)
 
 RSpec.configure do |config|
