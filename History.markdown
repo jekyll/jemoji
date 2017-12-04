@@ -1,9 +1,13 @@
 ## HEAD
 
-  * Define path with __dir__ (#64)
-  * Add Rubocop (#59)
+
+## v0.9.0 / 2017-12-03
+
   * Drop Support for Jekyll 2
   * Require Ruby 2.1
+  * Adopt Jekyll's Ruby Styleguide (#59)
+  * Define path with __dir__ (#64)
+  * Move version to its own file for easier bumping
 
 ## v0.8.1 / 2017-09-21
 
