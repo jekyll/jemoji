@@ -9,6 +9,7 @@ module Jekyll
     GITHUB_DOT_COM_ASSET_HOST_URL = "https://assets-cdn.github.com".freeze
     ASSET_PATH = "/images/icons/".freeze
     BODY_START_TAG = "<body".freeze
+    OPENING_BODY_TAG_REGEX = %r!<body(.*)>\s*!
 
     class << self
       def emojify(doc)
@@ -79,11 +80,11 @@ module Jekyll
       end
 
       def replace_document_body(doc)
-        src           = emoji_src(doc.site.config)
-        parsed_doc    = Nokogiri::HTML::Document.parse(doc.output)
-        body          = parsed_doc.at_css("body")
-        body.children = filter_with_emoji(src).call(body.inner_html)[:output].to_s
-        parsed_doc.to_html
+        src                 = emoji_src(doc.site.config)
+        head, opener, tail  = doc.output.partition(OPENING_BODY_TAG_REGEX)
+        body_content, *rest = tail.partition("</body>")
+        processed_markup    = filter_with_emoji(src).call(body_content)[:output].to_s
+        String.new(head) << opener << processed_markup << rest.join
       end
     end
   end
