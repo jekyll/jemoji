@@ -6,9 +6,9 @@ require "html/pipeline"
 
 module Jekyll
   class Emoji
-    GITHUB_DOT_COM_ASSET_HOST_URL = "https://assets-cdn.github.com".freeze
-    ASSET_PATH = "/images/icons/".freeze
-    BODY_START_TAG = "<body".freeze
+    GITHUB_DOT_COM_ASSET_HOST_URL = "https://assets-cdn.github.com"
+    ASSET_PATH = "/images/icons/"
+    BODY_START_TAG = "<body"
 
     class << self
       def emojify(doc)
@@ -63,7 +63,7 @@ module Jekyll
       # Returns true if the doc is written & is HTML.
       def emojiable?(doc)
         (doc.is_a?(Jekyll::Page) || doc.write?) &&
-          doc.output_ext == ".html" || (doc.permalink && doc.permalink.end_with?("/"))
+          doc.output_ext == ".html" || (doc.permalink&.end_with?("/"))
       end
 
       private
