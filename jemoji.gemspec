@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.files    = ["lib/jemoji.rb"]
 
-  s.required_ruby_version = ">= 2.1"
+  s.required_ruby_version = ">= 2.3.0"
 
   s.add_dependency "activesupport", ">= 4.2.9", "< 6.0"
   s.add_dependency "gemoji", "~> 3.0"
