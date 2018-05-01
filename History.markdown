@@ -4,6 +4,10 @@
 
   * Test against Ruby 2.5 (#71)
 
+### Minor Enhancements
+
+  * Relax version constraint on ActiveSupport (#76)
+
 ## v0.9.0 / 2017-12-03
 
   * Drop Support for Jekyll 2
