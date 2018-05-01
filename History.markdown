@@ -4,6 +4,11 @@
 
   * Test against Ruby 2.5 (#71)
 
+### Minor Enhancements
+
+  * Relax version constraint on ActiveSupport (#76)
+  * Bump Rubocop to v0.55.x (#75)
+
 ## v0.9.0 / 2017-12-03
 
   * Drop Support for Jekyll 2
