@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
 
   s.homepage = "https://github.com/jekyll/jemoji"
   s.licenses = ["MIT"]
-  s.files    = [ "lib/jemoji.rb" ]
+  s.files    = ["lib/jemoji.rb"]
 
   s.required_ruby_version = ">= 2.1"
 
@@ -23,5 +23,5 @@ Gem::Specification.new do |s|
   s.add_dependency "jekyll", "~> 3.0"
 
   s.add_development_dependency "rspec", "~> 3.0"
-  s.add_development_dependency "rubocop", "~> 0.51"
+  s.add_development_dependency "rubocop", "~> 0.55.0"
 end
