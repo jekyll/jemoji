@@ -1,16 +1,16 @@
-## HEAD
-
-### Development Fixes
-
-  * Test against Ruby 2.5 (#71)
+## v0.10 / 2018-05-02
 
 ### Minor Enhancements
 
-  * Relax version constraint on ActiveSupport (#76)
-  * Bump Rubocop to v0.55.x (#75)
+  * Let Nokogiri parse only the necessary markup (#74)
   * Drop support for Ruby 2.2 (#77)
   * Drop dependency on ActiveSupport (#78)
-  * Let Nokogiri parse only the necessary markup (#74)
+
+### Development Fixes
+
+  * Relax version constraint on ActiveSupport (#76)
+  * Bump Rubocop to v0.55.x (#75)
+  * Test against Ruby 2.5 (#71)
 
 ## v0.9.0 / 2017-12-03
 
