@@ -9,7 +9,7 @@ module Jekyll
     GITHUB_DOT_COM_ASSET_HOST_URL = "https://assets-cdn.github.com"
     ASSET_PATH = "/images/icons/"
     BODY_START_TAG = "<body"
-    OPENING_BODY_TAG_REGEX = %r!<body(.*)>\s*!
+    OPENING_BODY_TAG_REGEX = %r!<body(.*?)>\s*!
 
     class << self
       def emojify(doc)

@@ -17,6 +17,10 @@ RSpec.configure do |config|
     File.read File.expand_path("fixtures/index.html", __dir__)
   end
 
+  def minified_fixture
+    File.read File.expand_path("fixtures/minified.html", __dir__)
+  end
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

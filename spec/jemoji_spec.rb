@@ -29,6 +29,7 @@ RSpec.describe(Jekyll::Emoji) do
 
   let(:pages) { site.pages }
   let(:index) { site.pages.find { |page| page["title"] == "Jemoji" } }
+  let(:minified) { site.pages.find { |page| page["title"] == "Jemoji Minified" } }
 
   let(:basic_doc) { find_by_title(site.collections["docs"].docs, "File") }
   let(:doc_with_liquid) { find_by_title(site.collections["docs"].docs, "With Liquid") }
@@ -88,6 +89,7 @@ RSpec.describe(Jekyll::Emoji) do
 
   it "does not managle layouts" do
     expect(index.output).to eql(index_fixture)
+    expect(minified.output).to eql(minified_fixture)
   end
 
   context "with a different base for jemoji" do
