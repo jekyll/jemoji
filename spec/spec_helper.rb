@@ -13,12 +13,15 @@ RSpec.configure do |config|
     docs.find { |d| d.data["title"] == title }
   end
 
-  def index_fixture
-    File.read File.expand_path("fixtures/index.html", __dir__)
-  end
-
-  def minified_fixture
-    File.read File.expand_path("fixtures/minified.html", __dir__)
+  %w(
+    index
+    minified
+    plain_index
+    plain_minified
+  ).each do |method_name|
+    define_method "#{method_name}_fixture".to_sym do
+      File.read File.expand_path("fixtures/#{method_name}.html", __dir__)
+    end
   end
 
   # rspec-expectations config goes here. You can use an alternate

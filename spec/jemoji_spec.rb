@@ -31,6 +31,11 @@ RSpec.describe(Jekyll::Emoji) do
   let(:index) { site.pages.find { |page| page["title"] == "Jemoji" } }
   let(:minified) { site.pages.find { |page| page["title"] == "Jemoji Minified" } }
 
+  # plain_* denote pages that generate markup containing body tags without any attribute.
+  # For example, <body>Hello World!</body>
+  let(:plain_index) { site.pages.find { |page| page["title"] == "Plain Jemoji" } }
+  let(:plain_minified) { site.pages.find { |page| page["title"] == "Plain Jemoji Minified" } }
+
   let(:basic_doc) { find_by_title(site.collections["docs"].docs, "File") }
   let(:doc_with_liquid) { find_by_title(site.collections["docs"].docs, "With Liquid") }
   let(:txt_doc) { find_by_title(site.collections["docs"].docs, "Don't Touch Me") }
@@ -90,6 +95,11 @@ RSpec.describe(Jekyll::Emoji) do
   it "does not managle layouts" do
     expect(index.output).to eql(index_fixture)
     expect(minified.output).to eql(minified_fixture)
+  end
+
+  it "works with simple body tags without any attributes" do
+    expect(plain_index.output).to eql(plain_index_fixture)
+    expect(plain_minified.output).to eql(plain_minified_fixture)
   end
 
   context "with a different base for jemoji" do
