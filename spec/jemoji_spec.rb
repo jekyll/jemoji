@@ -93,13 +93,13 @@ RSpec.describe(Jekyll::Emoji) do
   end
 
   it "does not managle layouts" do
-    expect(index.output).to eql(index_fixture)
-    expect(minified.output).to eql(minified_fixture)
+    expect(index.output).to eql(fixture("index.html"))
+    expect(minified.output).to eql(fixture("minified_index.html"))
   end
 
   it "works with simple body tags without any attributes" do
-    expect(plain_index.output).to eql(plain_index_fixture)
-    expect(plain_minified.output).to eql(plain_minified_fixture)
+    expect(plain_index.output).to eql(fixture("index_without_body_attributes.html"))
+    expect(plain_minified.output).to eql(fixture("minified_index_without_body_attributes.html"))
   end
 
   context "with a different base for jemoji" do
