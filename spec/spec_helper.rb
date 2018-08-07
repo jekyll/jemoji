@@ -13,8 +13,8 @@ RSpec.configure do |config|
     docs.find { |d| d.data["title"] == title }
   end
 
-  def index_fixture
-    File.read File.expand_path("fixtures/index.html", __dir__)
+  def fixture(filename)
+    File.read File.expand_path("fixtures/#{filename}", __dir__)
   end
 
   # rspec-expectations config goes here. You can use an alternate
