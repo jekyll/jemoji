@@ -1,3 +1,9 @@
+## HEAD
+
+### Bug Fixes
+
+  * Do not match the body tag eagerly (#82)
+
 ## v0.10 / 2018-05-02
 
 ### Minor Enhancements
