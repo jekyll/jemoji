@@ -6,7 +6,3 @@ AllCops:
   TargetRubyVersion: 2.3
   Exclude:
     - vendor/**/*
-
-Metrics/BlockLength:
-  Exclude:
-    - spec/jemoji_spec.rb
