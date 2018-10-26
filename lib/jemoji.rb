@@ -9,11 +9,12 @@ module Jekyll
     GITHUB_DOT_COM_ASSET_HOST_URL = "https://assets-cdn.github.com"
     ASSET_PATH = "/images/icons/"
     BODY_START_TAG = "<body"
-    OPENING_BODY_TAG_REGEX = %r!<body(.*?)>\s*!
+    OPENING_BODY_TAG_REGEX = %r!<body(.*?)>\s*!.freeze
 
     class << self
       def emojify(doc)
         return unless doc.output =~ HTML::Pipeline::EmojiFilter.emoji_pattern
+
         doc.output = if doc.output.include? BODY_START_TAG
                        replace_document_body(doc)
                      else
