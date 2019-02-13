@@ -16,7 +16,7 @@ RSpec.describe(Jekyll::Emoji) do
   end
   let(:emoji)       { described_class }
   let(:site)        { Jekyll::Site.new(configs) }
-  let(:default_src) { "https://assets-cdn.github.com/images/icons/" }
+  let(:default_src) { "https://github.githubassets.com/images/icons/" }
   let(:result) do
     <<-STR.strip
     <img class="emoji" title=":+1:" alt=":+1:" src="#{default_src}emoji/unicode/1f44d.png" height="20" width="20">
