@@ -1,12 +1,12 @@
-## HEAD
-
-### Development Fixes
-
-  * chore(deps): rubocop-jekyll 0.3 (#86)
+## v0.10.2 / 2019-02-13
 
 ### Bug Fixes
 
   * fix: update asset host URL (#90)
+
+### Development Fixes
+
+  * chore(deps): rubocop-jekyll 0.3 (#86)
 
 ## v0.10.1 / 2018-08-06
 
