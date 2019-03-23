@@ -1,3 +1,7 @@
+## v0.11.0 / 2019-03-23
+
+  * Test against Jekyll v4
+
 ## v0.10.2 / 2019-02-13
 
 ### Bug Fixes
