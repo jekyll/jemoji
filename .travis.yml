@@ -8,11 +8,18 @@ env:
   - JEKYLL_VERSION="~> 3.8"
 matrix:
   include:
+    - rvm: *latest_ruby
+      env: GEMOJI_VERSION=">= 4.0.0.pre0"
     - # GitHub Pages
       rvm: 2.5.3
       env: GH_PAGES=true
-    - rvm: *latest_ruby
+    - rvm: 2.5.3
+      env: GH_PAGES=true GEMOJI_VERSION=">= 4.0.0.pre0"
+    - # Jekyll 4.0
+      rvm: *latest_ruby
       env: JEKYLL_VERSION=">= 4.0.0.pre.alpha1"
+    - rvm: *latest_ruby
+      env: JEKYLL_VERSION=">= 4.0.0.pre.alpha1" GEMOJI_VERSION=">= 4.0.0.pre0"
 
 before_install:
   - gem update --system
