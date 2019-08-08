@@ -1,3 +1,9 @@
+## HEAD
+
+### Bug Fixes
+
+  * Support handling body tag across multiple lines (#96)
+
 ## v0.11.0 / 2019-03-23
 
   * Test against Jekyll v4
