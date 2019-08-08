@@ -36,6 +36,8 @@ RSpec.describe(Jekyll::Emoji) do
   let(:plain_index) { site.pages.find { |page| page["title"] == "Plain Jemoji" } }
   let(:plain_minified) { site.pages.find { |page| page["title"] == "Plain Jemoji Minified" } }
 
+  let(:multiline_body_tag) { site.pages.find { |page| page["title"] == "Multi-line Body Tag" } }
+
   let(:basic_doc) { find_by_title(site.collections["docs"].docs, "File") }
   let(:doc_with_liquid) { find_by_title(site.collections["docs"].docs, "With Liquid") }
   let(:txt_doc) { find_by_title(site.collections["docs"].docs, "Don't Touch Me") }
@@ -100,6 +102,10 @@ RSpec.describe(Jekyll::Emoji) do
   it "works with simple body tags without any attributes" do
     expect(plain_index.output).to eql(fixture("index_without_body_attributes.html"))
     expect(plain_minified.output).to eql(fixture("minified_index_without_body_attributes.html"))
+  end
+
+  it "works with HTML body tag markup across multiple lines" do
+    expect(multiline_body_tag.output).to eql(fixture("multiline_body_tag.html"))
   end
 
   context "with a different base for jemoji" do
