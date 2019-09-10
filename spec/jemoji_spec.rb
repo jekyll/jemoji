@@ -16,10 +16,13 @@ RSpec.describe(Jekyll::Emoji) do
   end
   let(:emoji)       { described_class }
   let(:site)        { Jekyll::Site.new(configs) }
-  let(:default_src) { "https://github.githubassets.com/images/icons/" }
+  let(:default_src) { "https://github.githubassets.com" }
+  let(:default_asset_path) { "/images/icons" }
+  let(:default_directory) { "/emoji" }
+  let(:default_file_name) { "/:file_name" }
   let(:result) do
     <<-STR.strip
-    <img class="emoji" title=":+1:" alt=":+1:" src="#{default_src}emoji/unicode/1f44d.png" height="20" width="20">
+    <img class="emoji" title=":+1:" alt=":+1:" src="#{default_src}#{default_asset_path}#{default_directory}/unicode/1f44d.png" height="20" width="20">
     STR
   end
 
@@ -58,7 +61,7 @@ RSpec.describe(Jekyll::Emoji) do
   end
 
   it "has a default source" do
-    expect(emoji.emoji_src).to eql(default_src)
+    expect(emoji.emoji_src_root).to eql(default_src)
   end
 
   it "correctly replaces the emoji with the img in posts" do
@@ -108,42 +111,42 @@ RSpec.describe(Jekyll::Emoji) do
     expect(multiline_body_tag.output).to eql(fixture("multiline_body_tag.html"))
   end
 
-  context "with a different base for jemoji" do
-    let(:emoji_src) { "http://mine.club/" }
+  context "with a different base for jemoji (without asset path)" do
+    let(:emoji_src_root) { "http://mine.club" }
     let(:config_overrides) do
       {
-        "emoji" => { "src" => emoji_src },
+        "emoji" => { "src" => emoji_src_root },
       }
     end
 
-    it "fetches the custom base from the config" do
-      expect(emoji.emoji_src(site.config)).to eql(emoji_src)
+    it "fetches the custom base from the config (without asset path)" do
+      expect(emoji.emoji_src_root(site.config)).to eql(emoji_src_root)
     end
 
-    it "respects the new base when emojifying" do
-      expect(basic_post.output).to eql(para(result.sub(default_src, emoji_src)))
+    it "respects the new base when emojifying (without asset path)" do
+      expect(basic_post.output).to eql(para(result.sub("#{default_src}#{default_asset_path}", emoji_src_root)))
     end
   end
 
   context "with the ASSET_HOST_URL environment variable set" do
     let(:asset_host_url)       { "https://assets.github.vm" }
-    let(:default_src_from_env) { "https://assets.github.vm/images/icons/" }
+    let(:default_src_from_env) { "https://assets.github.vm/images/icons" }
 
     before(:each) { ENV["ASSET_HOST_URL"] = asset_host_url }
     after(:each) { ENV.delete("ASSET_HOST_URL") }
 
     it "has the correct default source when ASSET_HOST_URL is set" do
-      expect(emoji.emoji_src).to eql(default_src_from_env)
+      expect(emoji.emoji_src_root + default_asset_path).to eql(default_src_from_env)
     end
 
     it "trims a trailing / if necessary" do
       ENV["ASSET_HOST_URL"] = "#{asset_host_url}/"
-      expect(emoji.emoji_src).to eql(default_src_from_env)
+      expect(emoji.emoji_src_root + default_asset_path).to eql(default_src_from_env)
     end
 
     it "falls back to using the default if ASSET_HOST_URL is empty" do
       ENV["ASSET_HOST_URL"] = ""
-      expect(emoji.emoji_src).to eql(default_src)
+      expect(emoji.emoji_src_root).to eql(default_src)
     end
   end
 end
