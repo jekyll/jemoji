@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency "jekyll", ">= 3.0", "< 5.0"
 
   s.add_development_dependency "bundler"
-  s.add_development_dependency "rake", "~> 12.0"
+  s.add_development_dependency "rake", "~> 13.0"
   s.add_development_dependency "rspec", "~> 3.0"
   s.add_development_dependency "rubocop-jekyll", "~> 0.4"
 end
