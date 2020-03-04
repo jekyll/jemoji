@@ -1,3 +1,9 @@
+## HEAD
+
+### Minor Enhancements
+
+  * Don&#39;t load Gemoji into memory immediately (#106)
+
 ## v0.11.1 / 2019-08-08
 
 ### Bug Fixes
