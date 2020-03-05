@@ -1,8 +1,13 @@
-## HEAD
+## v0.12.0 / 2020-03-05
 
 ### Minor Enhancements
 
-  * Don&#39;t load Gemoji into memory immediately (#106)
+  * perf: don&#39;t load Gemoji into memory immediately (#106)
+
+### Development Fixes
+
+  * deps: Ruby > 2.4 (EOL)
+  * ci: test with Ruby 2.7
 
 ## v0.11.1 / 2019-08-08
 
