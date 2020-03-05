@@ -12,7 +12,7 @@ module Jekyll
 
     class << self
       def emojify(doc)
-        return unless doc.output =~ HTML::Pipeline::EmojiFilter.emoji_pattern
+        return unless doc.output&.match?(HTML::Pipeline::EmojiFilter.emoji_pattern)
 
         doc.output = if doc.output.include? BODY_START_TAG
                        replace_document_body(doc)
