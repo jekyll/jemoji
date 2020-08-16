@@ -7,12 +7,14 @@ RSpec.describe(Jekyll::Emoji) do
 
   let(:config_overrides) { {} }
   let(:configs) do
-    Jekyll.configuration(config_overrides.merge(
-                           "skip_config_files" => false,
-                           "collections"       => { "docs" => { "output" => true }, "secret" => {} },
-                           "source"            => fixtures_dir,
-                           "destination"       => fixtures_dir("_site")
-                         ))
+    Jekyll.configuration(
+      config_overrides.merge(
+        "skip_config_files" => false,
+        "collections"       => { "docs" => { "output" => true }, "secret" => {} },
+        "source"            => fixtures_dir,
+        "destination"       => fixtures_dir("_site")
+      )
+    )
   end
   let(:emoji)       { described_class }
   let(:site)        { Jekyll::Site.new(configs) }
