@@ -8,6 +8,7 @@
   * Add github-actions to dependabot (#132)
   * Bump actions/checkout from 2 to 3 (#133)
   * Upgrade Rubocop target version to 2.7 (#134)
+  * Update rake requirement from ~&gt; 12.0 to ~&gt; 13.0 (#130)
 
 ## v0.12.0 / 2020-03-05
 
