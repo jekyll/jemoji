@@ -1,3 +1,12 @@
+## HEAD
+
+### Development Fixes
+
+  * Add Actions CI workflow (#127)
+  * Add release workflow (#128)
+  * Create dependabot config for rubygems upgrades (#126)
+  * Add github-actions to dependabot (#132)
+
 ## v0.12.0 / 2020-03-05
 
 ### Minor Enhancements
