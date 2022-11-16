@@ -1,0 +1,36 @@
+---
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+    - main
+    - master
+    - /.*-stable/
+  pull_request:
+    branches:
+    - main
+    - master
+    - /.*-stable/
+
+jobs:
+  ci:
+    if: "!contains(github.event.commits[0].message, '[ci skip]')"
+    name: 'Ruby ${{ matrix.ruby_version }} ${{ matrix.os }}'
+    runs-on: '${{ matrix.os }}'
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby_version:
+        - 2.7
+        - '3.0'
+        os:
+        - ubuntu-latest
+        - windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - run: script/cibuild
