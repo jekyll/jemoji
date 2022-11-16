@@ -3,7 +3,7 @@ name: Release Gem
 on:
   push:
     branches:
-      - main
+      - master
     paths:
       - "lib/**/version.rb"
 
