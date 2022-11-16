@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = ">= 2.4.0"
 
-  s.add_dependency "gemoji", "~> 3.0"
+  s.add_dependency "gemoji", "~> 4.0"
   s.add_dependency "html-pipeline", "~> 2.2"
   s.add_dependency "jekyll", ">= 3.0", "< 5.0"
 
