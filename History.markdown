@@ -6,6 +6,7 @@
   * Add release workflow (#128)
   * Create dependabot config for rubygems upgrades (#126)
   * Add github-actions to dependabot (#132)
+  * Bump actions/checkout from 2 to 3 (#133)
 
 ## v0.12.0 / 2020-03-05
 
