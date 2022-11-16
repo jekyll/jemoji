@@ -10,6 +10,10 @@
   * Upgrade Rubocop target version to 2.7 (#134)
   * Update rake requirement from ~&gt; 12.0 to ~&gt; 13.0 (#130)
 
+### Minor Enhancements
+
+  * Update gemoji requirement from ~&gt; 3.0 to &gt;= 3, &lt; 5 &amp; test with both major versions (#131)
+
 ## v0.12.0 / 2020-03-05
 
 ### Minor Enhancements
