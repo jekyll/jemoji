@@ -30,6 +30,8 @@ jobs:
         gemoji_version:
         - '3.0'
         - '4.0'
+    env:
+      GEMOJI_VERSION: ${{ matrix.gemoji_version }}
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
@@ -37,5 +39,3 @@ jobs:
           ruby-version: ${{ matrix.ruby_version }}
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - run: script/cibuild
-        env:
-          GEMOJI_VERSION: ${{ matrix.gemoji_version }}
