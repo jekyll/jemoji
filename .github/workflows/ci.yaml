@@ -1,41 +1,20 @@
 ---
-name: Continuous Integration
+# Dependabot automatically keeps our packages up to date
+# Docs: https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/configuration-options-for-dependency-updates
 
-on:
-  push:
-    branches:
-    - main
-    - master
-    - /.*-stable/
-  pull_request:
-    branches:
-    - main
-    - master
-    - /.*-stable/
-
-jobs:
-  ci:
-    if: "!contains(github.event.commits[0].message, '[ci skip]')"
-    name: 'Ruby ${{ matrix.ruby_version }} ${{ matrix.os }} gemoji ${{ matrix.gemoji_version }}'
-    runs-on: '${{ matrix.os }}'
-    strategy:
-      fail-fast: false
-      matrix:
-        ruby_version:
-        - 2.7
-        - '3.0'
-        os:
-        - ubuntu-latest
-        - windows-latest
-        gemoji_version:
-        - '3.0'
-        - '4.0'
-    env:
-      GEMOJI_VERSION: ${{ matrix.gemoji_version }}
-    steps:
-      - uses: actions/checkout@v3
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ matrix.ruby_version }}
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-      - run: script/cibuild
+version: 2
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 99
+  reviewers:
+  - jekyll/plugin-core
+- package-ecosystem: github-actions
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 99
+  reviewers:
+  - jekyll/plugin-core
