@@ -5,18 +5,18 @@ on:
   push:
     branches:
     - main
-	- master
+    - master
     - ".*-stable"
   pull_request:
     branches:
     - main
-	- master
+    - master
     - ".*-stable"
 
 jobs:
   ci:
     if: "!contains(github.event.commits[0].message, '[ci skip]')"
-    name: 'Ruby ${{ matrix.ruby_version }} ${{ matrix.os }}'
+    name: 'Ruby ${{ matrix.ruby_version }} ${{ matrix.os }} gemoji ${{ matrix.gemoji_version }}'
     runs-on: '${{ matrix.os }}'
     strategy:
       fail-fast: false
@@ -29,6 +29,11 @@ jobs:
         os:
         - ubuntu-latest
         - windows-latest
+	gemoji_version:
+        - '3.0'
+        - '4.0'
+    env:
+      GEMOJI_VERSION: ${{ matrix.gemoji_version }}
     steps:
       - uses: actions/checkout@v3
       - uses: ruby/setup-ruby@v1
